@@ -32,7 +32,7 @@ namespace FishFactoryView
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.ComboBoxProduct = new System.Windows.Forms.ComboBox();
+			this.ComboBoxCanned = new System.Windows.Forms.ComboBox();
 			this.TextBoxCount = new System.Windows.Forms.TextBox();
 			this.TextBoxSum = new System.Windows.Forms.TextBox();
 			this.ButtonCancel = new System.Windows.Forms.Button();
@@ -66,14 +66,14 @@ namespace FishFactoryView
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Сумма:";
 			// 
-			// ComboBoxProduct
+			// ComboBoxCanned
 			// 
-			this.ComboBoxProduct.FormattingEnabled = true;
-			this.ComboBoxProduct.Location = new System.Drawing.Point(123, 18);
-			this.ComboBoxProduct.Name = "ComboBoxProduct";
-			this.ComboBoxProduct.Size = new System.Drawing.Size(189, 23);
-			this.ComboBoxProduct.TabIndex = 3;
-			this.ComboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProduct_SelectedIndexChanged);
+			this.ComboBoxCanned.FormattingEnabled = true;
+			this.ComboBoxCanned.Location = new System.Drawing.Point(123, 18);
+			this.ComboBoxCanned.Name = "ComboBoxCanned";
+			this.ComboBoxCanned.Size = new System.Drawing.Size(189, 23);
+			this.ComboBoxCanned.TabIndex = 3;
+			this.ComboBoxCanned.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCanned_SelectedIndexChanged);
 			// 
 			// TextBoxCount
 			// 
@@ -120,12 +120,13 @@ namespace FishFactoryView
 			this.Controls.Add(this.ButtonCancel);
 			this.Controls.Add(this.TextBoxSum);
 			this.Controls.Add(this.TextBoxCount);
-			this.Controls.Add(this.ComboBoxProduct);
+			this.Controls.Add(this.ComboBoxCanned);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "FormCreateOrder";
 			this.Text = "Заказ";
+			this.Load += new System.EventHandler(this.FormCreateOrder_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -136,7 +137,7 @@ namespace FishFactoryView
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ComboBox ComboBoxProduct;
+		private System.Windows.Forms.ComboBox ComboBoxCanned;
 		private System.Windows.Forms.TextBox TextBoxCount;
 		private System.Windows.Forms.TextBox TextBoxSum;
 		private System.Windows.Forms.Button ButtonCancel;

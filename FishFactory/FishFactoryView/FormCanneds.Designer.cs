@@ -43,11 +43,10 @@ namespace FishFactoryView
 			this.dataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
 			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView.ColumnHeadersVisible = false;
-			this.dataGridView.Location = new System.Drawing.Point(22, 20);
-			this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.dataGridView.Location = new System.Drawing.Point(12, 15);
 			this.dataGridView.Name = "dataGridView";
-			this.dataGridView.Size = new System.Drawing.Size(365, 355);
-			this.dataGridView.TabIndex = 13;
+			this.dataGridView.Size = new System.Drawing.Size(313, 308);
+			this.dataGridView.TabIndex = 5;
 			// 
 			// buttonUpd
 			// 
@@ -106,6 +105,7 @@ namespace FishFactoryView
 			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.Name = "FormCanneds";
 			this.Text = "Разновидность консерв";
+			this.Load += new System.EventHandler(this.FormCanneds_Load_1);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
 			this.ResumeLayout(false);
 

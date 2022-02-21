@@ -23,31 +23,14 @@ namespace FishFactoryView
 			_logicP = logicP;
 			_logicO = logicO;
 		}
-		private void FormCreateOrder_Load(object sender, EventArgs e)
-		{
-			try
-			{
-				var list = _logicP.Read(null);
-				foreach (var component in list)
-				{
-					ComboBoxProduct.DisplayMember = "CannedName";
-					ComboBoxProduct.ValueMember = "Id";
-					ComboBoxProduct.DataSource = list;
-					ComboBoxProduct.SelectedItem = null;
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
+	
 		private void CalcSum()
 		{
-			if (ComboBoxProduct.SelectedValue != null && !string.IsNullOrEmpty(TextBoxCount.Text))
+			if (ComboBoxCanned.SelectedValue != null && !string.IsNullOrEmpty(TextBoxCount.Text))
 			{
 				try
 				{
-					int id = Convert.ToInt32(ComboBoxProduct.SelectedValue);
+					int id = Convert.ToInt32(ComboBoxCanned.SelectedValue);
 					CannedViewModel canned = _logicP.Read(new CannedBindingModel
 					{
 						Id = id
@@ -70,7 +53,7 @@ namespace FishFactoryView
 			   MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (ComboBoxProduct.SelectedValue == null)
+			if (ComboBoxCanned.SelectedValue == null)
 			{
 				MessageBox.Show("Выберите изделие", "Ошибка", MessageBoxButtons.OK,
 			   MessageBoxIcon.Error);
@@ -80,7 +63,7 @@ namespace FishFactoryView
 			{
 				_logicO.CreateOrder(new CreateOrderBindingModel
 				{
-					CannedId = Convert.ToInt32(ComboBoxProduct.SelectedValue),
+					CannedId = Convert.ToInt32(ComboBoxCanned.SelectedValue),
 					Count = Convert.ToInt32(TextBoxCount.Text),
 					Sum = Convert.ToDecimal(TextBoxSum.Text)
 				});
@@ -96,10 +79,6 @@ namespace FishFactoryView
 			}
 		}
 
-		private void ComboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			CalcSum();
-		}
 
 		private void TextBoxCount_TextChanged(object sender, EventArgs e)
 		{
@@ -110,6 +89,30 @@ namespace FishFactoryView
 		{
 			DialogResult = DialogResult.Cancel;
 			Close();
+		}
+
+		private void ComboBoxCanned_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			CalcSum();
+		}
+
+		private void FormCreateOrder_Load(object sender, EventArgs e)
+		{
+			try
+			{
+				var list = _logicP.Read(null);
+				foreach (var component in list)
+				{
+					ComboBoxCanned.DisplayMember = "CannedName";
+					ComboBoxCanned.ValueMember = "Id";
+					ComboBoxCanned.DataSource = list;
+					ComboBoxCanned.SelectedItem = null;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }

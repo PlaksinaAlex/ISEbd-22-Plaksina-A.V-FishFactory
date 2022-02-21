@@ -35,14 +35,14 @@ namespace FishFactoryView
 			this.ButtonIssuedOrder = new System.Windows.Forms.Button();
 			this.ButtonRef = new System.Windows.Forms.Button();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
-			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.cannedId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Canned = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DateStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.DateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumncannedId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnCanned = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnDateStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,9 +53,9 @@ namespace FishFactoryView
 			// 
 			// ButtonCreateOrder
 			// 
-			this.ButtonCreateOrder.Location = new System.Drawing.Point(684, 56);
+			this.ButtonCreateOrder.Location = new System.Drawing.Point(689, 39);
 			this.ButtonCreateOrder.Name = "ButtonCreateOrder";
-			this.ButtonCreateOrder.Size = new System.Drawing.Size(194, 41);
+			this.ButtonCreateOrder.Size = new System.Drawing.Size(190, 60);
 			this.ButtonCreateOrder.TabIndex = 0;
 			this.ButtonCreateOrder.Text = "Создать заказ";
 			this.ButtonCreateOrder.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@ namespace FishFactoryView
 			// 
 			// ButtonTakeOrderInWork
 			// 
-			this.ButtonTakeOrderInWork.Location = new System.Drawing.Point(685, 115);
+			this.ButtonTakeOrderInWork.Location = new System.Drawing.Point(689, 117);
 			this.ButtonTakeOrderInWork.Name = "ButtonTakeOrderInWork";
-			this.ButtonTakeOrderInWork.Size = new System.Drawing.Size(193, 46);
+			this.ButtonTakeOrderInWork.Size = new System.Drawing.Size(190, 60);
 			this.ButtonTakeOrderInWork.TabIndex = 1;
 			this.ButtonTakeOrderInWork.Text = "Отдать на выполнение";
 			this.ButtonTakeOrderInWork.UseVisualStyleBackColor = true;
@@ -73,9 +73,9 @@ namespace FishFactoryView
 			// 
 			// ButtonOrderReady
 			// 
-			this.ButtonOrderReady.Location = new System.Drawing.Point(687, 178);
+			this.ButtonOrderReady.Location = new System.Drawing.Point(689, 196);
 			this.ButtonOrderReady.Name = "ButtonOrderReady";
-			this.ButtonOrderReady.Size = new System.Drawing.Size(191, 58);
+			this.ButtonOrderReady.Size = new System.Drawing.Size(190, 60);
 			this.ButtonOrderReady.TabIndex = 2;
 			this.ButtonOrderReady.Text = "Заказ готов";
 			this.ButtonOrderReady.UseVisualStyleBackColor = true;
@@ -83,9 +83,9 @@ namespace FishFactoryView
 			// 
 			// ButtonIssuedOrder
 			// 
-			this.ButtonIssuedOrder.Location = new System.Drawing.Point(689, 256);
+			this.ButtonIssuedOrder.Location = new System.Drawing.Point(689, 276);
 			this.ButtonIssuedOrder.Name = "ButtonIssuedOrder";
-			this.ButtonIssuedOrder.Size = new System.Drawing.Size(189, 52);
+			this.ButtonIssuedOrder.Size = new System.Drawing.Size(190, 60);
 			this.ButtonIssuedOrder.TabIndex = 3;
 			this.ButtonIssuedOrder.Text = "Заказ выдан";
 			this.ButtonIssuedOrder.UseVisualStyleBackColor = true;
@@ -93,9 +93,9 @@ namespace FishFactoryView
 			// 
 			// ButtonRef
 			// 
-			this.ButtonRef.Location = new System.Drawing.Point(693, 343);
+			this.ButtonRef.Location = new System.Drawing.Point(689, 354);
 			this.ButtonRef.Name = "ButtonRef";
-			this.ButtonRef.Size = new System.Drawing.Size(185, 57);
+			this.ButtonRef.Size = new System.Drawing.Size(190, 60);
 			this.ButtonRef.TabIndex = 4;
 			this.ButtonRef.Text = "Обновить список";
 			this.ButtonRef.UseVisualStyleBackColor = true;
@@ -106,60 +106,61 @@ namespace FishFactoryView
 			this.dataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
 			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.cannedId,
-            this.Canned,
-            this.Count,
-            this.Sum,
-            this.Status,
-            this.DateStart,
-            this.DateEnd});
+            this.ColumnId,
+            this.ColumncannedId,
+            this.ColumnCanned,
+            this.ColumnCount,
+            this.ColumnSum,
+            this.ColumnStatus,
+            this.ColumnDateStart,
+            this.ColumnDateEnd});
 			this.dataGridView.Location = new System.Drawing.Point(12, 39);
 			this.dataGridView.Name = "dataGridView";
 			this.dataGridView.Size = new System.Drawing.Size(636, 387);
 			this.dataGridView.TabIndex = 6;
 			// 
-			// Id
+			// ColumnId
 			// 
-			this.Id.HeaderText = "Id";
-			this.Id.Name = "Id";
-			this.Id.Visible = false;
+			this.ColumnId.HeaderText = "Id";
+			this.ColumnId.Name = "ColumnId";
+			this.ColumnId.Visible = false;
+			this.ColumnId.Width = 10;
 			// 
-			// cannedId
+			// ColumncannedId
 			// 
-			this.cannedId.HeaderText = "cannedId";
-			this.cannedId.Name = "cannedId";
-			this.cannedId.Visible = false;
+			this.ColumncannedId.HeaderText = "cannedId";
+			this.ColumncannedId.Name = "ColumncannedId";
+			this.ColumncannedId.Visible = false;
 			// 
-			// Canned
+			// ColumnCanned
 			// 
-			this.Canned.HeaderText = "Изделие";
-			this.Canned.Name = "Canned";
+			this.ColumnCanned.HeaderText = "Изделие";
+			this.ColumnCanned.Name = "ColumnCanned";
 			// 
-			// Count
+			// ColumnCount
 			// 
-			this.Count.HeaderText = "Количество";
-			this.Count.Name = "Count";
+			this.ColumnCount.HeaderText = "Количество";
+			this.ColumnCount.Name = "ColumnCount";
 			// 
-			// Sum
+			// ColumnSum
 			// 
-			this.Sum.HeaderText = "Сумма";
-			this.Sum.Name = "Sum";
+			this.ColumnSum.HeaderText = "Сумма";
+			this.ColumnSum.Name = "ColumnSum";
 			// 
-			// Status
+			// ColumnStatus
 			// 
-			this.Status.HeaderText = "Статус";
-			this.Status.Name = "Status";
+			this.ColumnStatus.HeaderText = "Статус";
+			this.ColumnStatus.Name = "ColumnStatus";
 			// 
-			// DateStart
+			// ColumnDateStart
 			// 
-			this.DateStart.HeaderText = "Дата создания";
-			this.DateStart.Name = "DateStart";
+			this.ColumnDateStart.HeaderText = "Дата создания";
+			this.ColumnDateStart.Name = "ColumnDateStart";
 			// 
-			// DateEnd
+			// ColumnDateEnd
 			// 
-			this.DateEnd.HeaderText = "Дата выполнения";
-			this.DateEnd.Name = "DateEnd";
+			this.ColumnDateEnd.HeaderText = "Дата выполнения";
+			this.ColumnDateEnd.Name = "ColumnDateEnd";
 			// 
 			// menuStrip1
 			// 
@@ -183,14 +184,14 @@ namespace FishFactoryView
 			// компонентыToolStripMenuItem
 			// 
 			this.компонентыToolStripMenuItem.Name = "компонентыToolStripMenuItem";
-			this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
 			this.компонентыToolStripMenuItem.Text = "Компоненты";
 			this.компонентыToolStripMenuItem.Click += new System.EventHandler(this.компонентыToolStripMenuItem_Click);
 			// 
 			// изделияToolStripMenuItem
 			// 
 			this.изделияToolStripMenuItem.Name = "изделияToolStripMenuItem";
-			this.изделияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.изделияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
 			this.изделияToolStripMenuItem.Text = "Изделия";
 			this.изделияToolStripMenuItem.Click += new System.EventHandler(this.изделияToolStripMenuItem_Click);
 			// 
@@ -209,6 +210,7 @@ namespace FishFactoryView
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FormMain";
 			this.Text = "Рыбный завод";
+			this.Load += new System.EventHandler(this.FormMain_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
@@ -225,17 +227,17 @@ namespace FishFactoryView
 		private System.Windows.Forms.Button ButtonIssuedOrder;
 		private System.Windows.Forms.Button ButtonRef;
 		private System.Windows.Forms.DataGridView dataGridView;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-		private System.Windows.Forms.DataGridViewTextBoxColumn cannedId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Canned;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Count;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Sum;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-		private System.Windows.Forms.DataGridViewTextBoxColumn DateStart;
-		private System.Windows.Forms.DataGridViewTextBoxColumn DateEnd;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem изделияToolStripMenuItem;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumncannedId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCanned;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateStart;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
 	}
 }

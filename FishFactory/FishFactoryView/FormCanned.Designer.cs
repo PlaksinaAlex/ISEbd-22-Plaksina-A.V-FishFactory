@@ -144,6 +144,7 @@ namespace FishFactoryView
             this.dataGridViewTextBoxColumn3});
 			this.dataGridView.Location = new System.Drawing.Point(32, 22);
 			this.dataGridView.Name = "dataGridView";
+			this.dataGridView.RowTemplate.Height = 25;
 			this.dataGridView.Size = new System.Drawing.Size(335, 235);
 			this.dataGridView.TabIndex = 10;
 			// 
@@ -198,6 +199,7 @@ namespace FishFactoryView
 			this.Controls.Add(this.label1);
 			this.Name = "FormCanned";
 			this.Text = "Изделие";
+			this.Load += new System.EventHandler(this.FormCanned_Load);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
 			this.ResumeLayout(false);

@@ -22,10 +22,6 @@ namespace FishFactoryView
 			_orderLogic = orderLogic;
 		}
 
-		private void FormMain_Load(object sender, EventArgs e)
-		{
-			LoadData();
-		}
 		private void LoadData()
 		{
 			try
@@ -76,15 +72,13 @@ namespace FishFactoryView
 				{
 					_orderLogic.TakeOrderInWork(new ChangeStatusBindingModel
 					{
-						OrderId =
-				   id
+						OrderId = id
 					});
 					LoadData();
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-				   MessageBoxIcon.Error);
+					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,  MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -135,5 +129,11 @@ namespace FishFactoryView
 		{
 			LoadData();
 		}
+
+		private void FormMain_Load(object sender, EventArgs e)
+		{
+			LoadData();
+		}
+
 	}
 }

@@ -21,10 +21,6 @@ namespace FishFactoryView
 			InitializeComponent();
 			_logic = logic;
 		}
-		private void FormComponents_Load(object sender, EventArgs e)
-		{
-			LoadData();
-		}
 		private void LoadData()
 		{
 			try
@@ -91,6 +87,11 @@ namespace FishFactoryView
 		}
 
 		private void ButtonRef_Click(object sender, EventArgs e)
+		{
+			LoadData();
+		}
+
+		private void FormComponents_Load(object sender, EventArgs e)
 		{
 			LoadData();
 		}

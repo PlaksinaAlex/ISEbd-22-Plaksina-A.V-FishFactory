@@ -22,25 +22,7 @@ namespace FishFactoryView
 			InitializeComponent();
 			_logic = logic;
 		}
-		private void FormComponent_Load(object sender, EventArgs e)
-		{
-			if (id.HasValue)
-			{
-				try
-				{
-					var view = _logic.Read(new ComponentBindingModel { Id = id })?[0];
-					if (view != null)
-					{
-						textBoxName.Text = view.ComponentName;
-					}
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-				   MessageBoxIcon.Error);
-				}
-			}
-		}
+	
 
 
 		private void ButtonSave_Click(object sender, EventArgs e)
@@ -74,6 +56,26 @@ namespace FishFactoryView
 		{
 			DialogResult = DialogResult.Cancel;
 			Close();
+		}
+
+		private void FormComponent_Load(object sender, EventArgs e)
+		{
+			if (id.HasValue)
+			{
+				try
+				{
+					var view = _logic.Read(new ComponentBindingModel { Id = id })?[0];
+					if (view != null)
+					{
+						textBoxName.Text = view.ComponentName;
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+				   MessageBoxIcon.Error);
+				}
+			}
 		}
 	}
 }

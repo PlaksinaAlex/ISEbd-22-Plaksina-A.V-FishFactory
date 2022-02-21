@@ -28,40 +28,13 @@ namespace FishFactoryView
 		private int? id;
 
 		private Dictionary<int, (string, int)> cannedComponents;
+
 		public FormCanned(ICannedLogic logic)
 		{
 			InitializeComponent();
 			_logic = logic;
 		}
-		private void FormCanned_Load(object sender, EventArgs e)
-		{
-			if (id.HasValue)
-			{
-				try
-				{
-					CannedViewModel view = _logic.Read(new CannedBindingModel
-					{
-						Id = id.Value
-					})?[0];
-					if (view != null)
-					{
-						textBoxName.Text = view.CannedName;
-						textBoxPrice.Text = view.Price.ToString();
-						cannedComponents = view.CannedComponents;
-						LoadData();
-					}
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-				   MessageBoxIcon.Error);
-				}
-			}
-			else
-			{
-				cannedComponents = new Dictionary<int, (string, int)>();
-			}
-		}
+	
 		private void LoadData()
 		{
 			try
@@ -186,5 +159,36 @@ namespace FishFactoryView
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
+
+		private void FormCanned_Load(object sender, EventArgs e)
+		{
+			if (id.HasValue)
+			{
+				try
+				{
+					CannedViewModel view = _logic.Read(new CannedBindingModel
+					{
+						Id = id.Value
+					})?[0];
+					if (view != null)
+					{
+						textBoxName.Text = view.CannedName;
+						textBoxPrice.Text = view.Price.ToString();
+						cannedComponents = view.CannedComponents;
+						LoadData();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+				   MessageBoxIcon.Error);
+				}
+			}
+			else
+			{
+				cannedComponents = new Dictionary<int, (string, int)>();
+			}
+		}
+
 	}
 }
