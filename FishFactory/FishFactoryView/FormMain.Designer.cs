@@ -35,14 +35,6 @@ namespace FishFactoryView
 			this.ButtonIssuedOrder = new System.Windows.Forms.Button();
 			this.ButtonRef = new System.Windows.Forms.Button();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
-			this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumncannedId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnCanned = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnDateStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,64 +95,14 @@ namespace FishFactoryView
 			// 
 			// dataGridView
 			// 
-			this.dataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+			this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnId,
-            this.ColumncannedId,
-            this.ColumnCanned,
-            this.ColumnCount,
-            this.ColumnSum,
-            this.ColumnStatus,
-            this.ColumnDateStart,
-            this.ColumnDateEnd});
-			this.dataGridView.Location = new System.Drawing.Point(12, 39);
+			this.dataGridView.Location = new System.Drawing.Point(12, 29);
 			this.dataGridView.Name = "dataGridView";
-			this.dataGridView.Size = new System.Drawing.Size(636, 387);
-			this.dataGridView.TabIndex = 6;
-			// 
-			// ColumnId
-			// 
-			this.ColumnId.HeaderText = "Id";
-			this.ColumnId.Name = "ColumnId";
-			this.ColumnId.Visible = false;
-			this.ColumnId.Width = 10;
-			// 
-			// ColumncannedId
-			// 
-			this.ColumncannedId.HeaderText = "cannedId";
-			this.ColumncannedId.Name = "ColumncannedId";
-			this.ColumncannedId.Visible = false;
-			// 
-			// ColumnCanned
-			// 
-			this.ColumnCanned.HeaderText = "Изделие";
-			this.ColumnCanned.Name = "ColumnCanned";
-			// 
-			// ColumnCount
-			// 
-			this.ColumnCount.HeaderText = "Количество";
-			this.ColumnCount.Name = "ColumnCount";
-			// 
-			// ColumnSum
-			// 
-			this.ColumnSum.HeaderText = "Сумма";
-			this.ColumnSum.Name = "ColumnSum";
-			// 
-			// ColumnStatus
-			// 
-			this.ColumnStatus.HeaderText = "Статус";
-			this.ColumnStatus.Name = "ColumnStatus";
-			// 
-			// ColumnDateStart
-			// 
-			this.ColumnDateStart.HeaderText = "Дата создания";
-			this.ColumnDateStart.Name = "ColumnDateStart";
-			// 
-			// ColumnDateEnd
-			// 
-			this.ColumnDateEnd.HeaderText = "Дата выполнения";
-			this.ColumnDateEnd.Name = "ColumnDateEnd";
+			this.dataGridView.ReadOnly = true;
+			this.dataGridView.RowTemplate.Height = 25;
+			this.dataGridView.Size = new System.Drawing.Size(636, 373);
+			this.dataGridView.TabIndex = 0;
 			// 
 			// menuStrip1
 			// 
@@ -231,13 +173,5 @@ namespace FishFactoryView
 		private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem изделияToolStripMenuItem;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumncannedId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCanned;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateStart;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
 	}
 }
