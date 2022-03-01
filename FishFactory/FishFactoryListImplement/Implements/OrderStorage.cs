@@ -116,6 +116,7 @@ namespace FishFactoryListImplement.Implements
                 if (canned.Id == order.CannedId)
                 {
                     cannedName = canned.CannedName;
+                    break;
                 }
             }
 
