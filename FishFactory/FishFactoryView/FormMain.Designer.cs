@@ -39,6 +39,8 @@ namespace FishFactoryView
 			this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.изделияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.складыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.пополнениеСкладаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -107,7 +109,8 @@ namespace FishFactoryView
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem});
+            this.справочникиToolStripMenuItem,
+            this.пополнениеСкладаToolStripMenuItem1});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(915, 24);
@@ -118,7 +121,8 @@ namespace FishFactoryView
 			// 
 			this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
-            this.изделияToolStripMenuItem});
+            this.изделияToolStripMenuItem,
+            this.складыToolStripMenuItem1});
 			this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
 			this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
 			this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -136,6 +140,20 @@ namespace FishFactoryView
 			this.изделияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
 			this.изделияToolStripMenuItem.Text = "Изделия";
 			this.изделияToolStripMenuItem.Click += new System.EventHandler(this.изделияToolStripMenuItem_Click);
+			// 
+			// складыToolStripMenuItem1
+			// 
+			this.складыToolStripMenuItem1.Name = "складыToolStripMenuItem1";
+			this.складыToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.складыToolStripMenuItem1.Text = "Склады";
+			this.складыToolStripMenuItem1.Click += new System.EventHandler(this.складыToolStripMenuItem1_Click);
+			// 
+			// пополнениеСкладаToolStripMenuItem1
+			// 
+			this.пополнениеСкладаToolStripMenuItem1.Name = "пополнениеСкладаToolStripMenuItem1";
+			this.пополнениеСкладаToolStripMenuItem1.Size = new System.Drawing.Size(129, 20);
+			this.пополнениеСкладаToolStripMenuItem1.Text = "Пополнение склада";
+			this.пополнениеСкладаToolStripMenuItem1.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem1_Click);
 			// 
 			// FormMain
 			// 
@@ -173,5 +191,7 @@ namespace FishFactoryView
 		private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem изделияToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem складыToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem1;
 	}
 }
