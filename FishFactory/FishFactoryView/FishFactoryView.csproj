@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FishFactoryBusinessLogic\FishFactoryBusinessLogic.csproj" />
+    <ProjectReference Include="..\FishFactoryFileImplement\FishFactoryFileImplement.csproj" />
     <ProjectReference Include="..\FishFactoryListImplement\FishFactoryListImplement.csproj" />
   </ItemGroup>
 
