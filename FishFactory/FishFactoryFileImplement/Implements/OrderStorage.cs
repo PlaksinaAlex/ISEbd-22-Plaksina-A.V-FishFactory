@@ -85,6 +85,7 @@ namespace FishFactoryFileImplement.Implements
 				if (canned.Id == order.CannedId)
 				{
 					cannedName = canned.CannedName;
+					break;
 				}
 			}
 
