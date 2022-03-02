@@ -12,13 +12,15 @@ namespace FishFactoryListImplement
 		private static DataListSingleton instance;
 		public List<Component> Components { get; set; }
 		public List<Order> Orders { get; set; }
-
 		public List<Canned> Canneds { get; set; }
+
+		public List<WareHouse> WareHouses { get; set; }
 		private DataListSingleton()
 		{
 			Components = new List<Component>();
 			Orders = new List<Order>();
 			Canneds = new List<Canned>();
+			WareHouses = new List<WareHouse>();
 		}
 		public static DataListSingleton GetInstance()
 		{
