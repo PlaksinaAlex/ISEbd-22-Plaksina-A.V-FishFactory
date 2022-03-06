@@ -53,6 +53,8 @@ namespace FishFactoryView
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<ICannedLogic, CannedLogic>(new
 			HierarchicalLifetimeManager());
+			currentContainer.RegisterType<IWareHouseStorage, WareHouseStorage>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<IWareHouseLogic, WareHouseLogic>(new HierarchicalLifetimeManager());
 			return currentContainer;
 		}
 	}

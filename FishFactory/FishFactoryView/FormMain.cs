@@ -131,5 +131,17 @@ namespace FishFactoryView
 		{
 			LoadData();
 		}
+	
+		private void пополнениеСкладаToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			var form = Program.Container.Resolve<FormWareHouseRestocking>();
+			form.ShowDialog();
+		}
+
+		private void складыToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			var form = Program.Container.Resolve<FormWareHouses>();
+			form.ShowDialog();
+		}
 	}
 }
