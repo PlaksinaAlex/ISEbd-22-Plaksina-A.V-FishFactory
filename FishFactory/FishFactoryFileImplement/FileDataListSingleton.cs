@@ -19,14 +19,19 @@ namespace FishFactoryFileImplement
 		private readonly string OrderFileName = "Order.xml";
 
 		private readonly string CannedFileName = "Canned.xml";
+
+		private readonly string WareHouseFileName = "WareHouse.xml";
 		public List<Component> Components { get; set; }
 		public List<Order> Orders { get; set; }
 		public List<Canned> Canneds { get; set; }
+
+		public List<WareHouse> WareHouses { get; set; }
 		private FileDataListSingleton()
 		{
 			Components = LoadComponents();
 			Orders = LoadOrders();
 			Canneds = LoadCanneds();
+			WareHouses = LoadWareHouses();
 		}
 		public static FileDataListSingleton GetInstance()
 		{
@@ -41,7 +46,7 @@ namespace FishFactoryFileImplement
 			instance.SaveComponents();
 			instance.SaveOrders();
 			instance.SaveCanneds();
-
+			instance.SaveWareHouses();
 		}
 		private List<Component> LoadComponents()
 		{
@@ -129,6 +134,34 @@ namespace FishFactoryFileImplement
 			}
 			return list;
 		}
+		private List<WareHouse> LoadWareHouses()
+		{
+			var list = new List<WareHouse>();
+			if (File.Exists(WareHouseFileName))
+			{
+				var xDocument = XDocument.Load(WareHouseFileName);
+				var xElements = xDocument.Root.Elements("WareHouse").ToList();
+				foreach (var elem in xElements)
+				{
+					var WHComp = new Dictionary<int, int>();
+					foreach (var component in
+				   elem.Element("WareHouseComponents").Elements("WareHouseComponent").ToList())
+					{
+						WHComp.Add(Convert.ToInt32(component.Element("Key").Value),
+					   Convert.ToInt32(component.Element("Value").Value));
+					}
+					list.Add(new WareHouse
+					{
+						Id = Convert.ToInt32(elem.Attribute("Id").Value),
+						WareHouseName = elem.Element("WareHouseName").Value,
+						ResponsibleFace = elem.Element("ResponsibleFace").Value,
+						DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
+						WareHouseComponents = WHComp
+					});
+				}
+			}
+			return list;
+		}
 		private void SaveComponents()
 		{
 			if (Components != null)
@@ -185,6 +218,31 @@ namespace FishFactoryFileImplement
 				}
 				var xDocument = new XDocument(xElement);
 				xDocument.Save(CannedFileName);
+			}
+		}
+		private void SaveWareHouses()
+		{
+			if (WareHouses != null)
+			{
+				var xElement = new XElement("Warehouses");
+				foreach (var warehouse in WareHouses)
+				{
+					var warehouseElement = new XElement("WareHouseComponents");
+					foreach (var component in warehouse.WareHouseComponents)
+					{
+						warehouseElement.Add(new XElement("WareHouseComponent",
+						new XElement("Key", component.Key),
+						new XElement("Value", component.Value)));
+					}
+					xElement.Add(new XElement("WareHouse",
+					 new XAttribute("Id", warehouse.Id),
+					 new XElement("WareHouseName", warehouse.WareHouseName),
+					 new XElement("ResponsibleFace", warehouse.ResponsibleFace),
+					 new XElement("DateCreate", warehouse.DateCreate),
+					 warehouseElement));
+				}
+				var xDocument = new XDocument(xElement);
+				xDocument.Save(WareHouseFileName);
 			}
 		}
 	}

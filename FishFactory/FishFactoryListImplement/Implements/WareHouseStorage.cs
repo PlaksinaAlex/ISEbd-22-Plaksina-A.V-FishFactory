@@ -150,6 +150,10 @@ namespace FishFactoryListImplement.Implements
                 WareHouseComponents = warehouseComponents
             };
         }
+        public bool WriteOffFromWarehouses(Dictionary<int, (string, int)> components, int writeOffCount)
+        {
+            return false;
+        }
 
     }
 }
