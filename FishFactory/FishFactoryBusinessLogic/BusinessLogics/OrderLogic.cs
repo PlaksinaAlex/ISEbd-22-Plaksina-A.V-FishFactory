@@ -14,9 +14,13 @@ namespace FishFactoryBusinessLogic.BusinessLogics
     public class OrderLogic : IOrderLogic
     {
         private readonly IOrderStorage _orderStorage;
-        public OrderLogic(IOrderStorage orderStorage)
+        private readonly ICannedStorage _cannedStorage;
+        private readonly IWareHouseStorage _wareHouseStorage;
+        public OrderLogic(IOrderStorage orderStorage, ICannedStorage cannedStorage, IWareHouseStorage wareHouseStorage)
         {
             _orderStorage = orderStorage;
+            _cannedStorage = cannedStorage;
+            _wareHouseStorage = wareHouseStorage;
         }
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
@@ -54,6 +58,10 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             if (order.Status != OrderStatus.Принят)
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
+            }
+            if (!_wareHouseStorage.WriteOffFromWarehouses(_cannedStorage.GetElement(new CannedBindingModel { Id = order.CannedId }).CannedComponents, order.Count))
+            {
+                throw new Exception("Недостаточно компонентов");
             }
             _orderStorage.Update(new OrderBindingModel
             {
