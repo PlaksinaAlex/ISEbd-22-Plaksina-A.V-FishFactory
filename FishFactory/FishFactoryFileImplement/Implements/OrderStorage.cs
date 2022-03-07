@@ -78,17 +78,7 @@ namespace FishFactoryFileImplement.Implements
 		}
 		private OrderViewModel CreateModel(Order order)
 		{
-			string cannedName = null;
-
-			foreach (var canned in source.Canneds)
-			{
-				if (canned.Id == order.CannedId)
-				{
-					cannedName = canned.CannedName;
-					break;
-				}
-			}
-
+			
 			return new OrderViewModel
 			{
 				Id = order.Id,
@@ -98,7 +88,7 @@ namespace FishFactoryFileImplement.Implements
 				DateCreate = order.DateCreate,
 				DateImplement = order.DateImplement,
 				Count = order.Count,
-				CannedName = cannedName
+				CannedName = source.Canneds.FirstOrDefault(canned=>canned.Id==order.CannedId)?.CannedName
 			};
 		}
 	}
