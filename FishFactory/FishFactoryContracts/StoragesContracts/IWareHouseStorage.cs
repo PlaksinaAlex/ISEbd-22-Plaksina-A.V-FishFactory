@@ -16,5 +16,6 @@ namespace FishFactoryContracts.StoragesContracts
         void Insert(WareHouseBindingModel model);
         void Update(WareHouseBindingModel model);
         void Delete(WareHouseBindingModel model);
+        bool WriteOffFromWarehouses(Dictionary<int, (string, int)> components, int writeOffCount);
     }
 }
