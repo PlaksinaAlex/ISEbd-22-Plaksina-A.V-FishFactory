@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishFactoryDatabaseImplement.Migrations
 {
     [DbContext(typeof(FishFactoryDatabase))]
-    [Migration("20220319190311_initialcreate")]
+    [Migration("20220320155202_initialcreate")]
     partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,6 +113,54 @@ namespace FishFactoryDatabaseImplement.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResponsibleFace")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WareHouseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WareHouses");
+                });
+
+            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouseComponent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComponentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WareHouseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComponentId");
+
+                    b.HasIndex("WareHouseId");
+
+                    b.ToTable("WareHouseComponents");
+                });
+
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.CannedComponent", b =>
                 {
                     b.HasOne("FishFactoryDatabaseImplement.Models.Canned", "Canned")
@@ -143,6 +191,25 @@ namespace FishFactoryDatabaseImplement.Migrations
                     b.Navigation("Canned");
                 });
 
+            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouseComponent", b =>
+                {
+                    b.HasOne("FishFactoryDatabaseImplement.Models.Component", "Component")
+                        .WithMany("WareHouseComponents")
+                        .HasForeignKey("ComponentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FishFactoryDatabaseImplement.Models.WareHouse", "WareHouse")
+                        .WithMany("WareHouseComponents")
+                        .HasForeignKey("WareHouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Component");
+
+                    b.Navigation("WareHouse");
+                });
+
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.Canned", b =>
                 {
                     b.Navigation("CannedComponents");
@@ -153,6 +220,13 @@ namespace FishFactoryDatabaseImplement.Migrations
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.Component", b =>
                 {
                     b.Navigation("CannedComponents");
+
+                    b.Navigation("WareHouseComponents");
+                });
+
+            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouse", b =>
+                {
+                    b.Navigation("WareHouseComponents");
                 });
 #pragma warning restore 612, 618
         }

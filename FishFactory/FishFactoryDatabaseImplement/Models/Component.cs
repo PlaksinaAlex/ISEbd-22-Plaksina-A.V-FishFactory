@@ -16,5 +16,7 @@ namespace FishFactoryDatabaseImplement.Models
 		public string ComponentName { get; set; }
 		[ForeignKey("ComponentId")]
 		public virtual List<CannedComponent> CannedComponents { get; set; }
+		[ForeignKey("ComponentId")]
+		public virtual List<WareHouseComponent> WareHouseComponents { get; set; }
 	}
 }
