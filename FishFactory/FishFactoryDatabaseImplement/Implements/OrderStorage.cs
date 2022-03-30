@@ -41,7 +41,7 @@ namespace FishFactoryDatabaseImplement.Implements
             using (FishFactoryDatabase context = new FishFactoryDatabase())
             {
                 return context.Orders.Include(rec => rec.Canned)
-                .Where(rec => rec.CannedId == model.CannedId)
+                .Where(rec => rec.CannedId == model.CannedId || (model.DateFrom.GetHashCode() != 0 && model.DateTo.GetHashCode() != 0 && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
