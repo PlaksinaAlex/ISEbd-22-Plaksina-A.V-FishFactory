@@ -28,7 +28,7 @@ namespace FishFactoryView
 			{
 				Dock = DockStyle.Fill
 			};
-			reportViewer.LocalReport.LoadReportDefinition(new FileStream("C:\\Users\\user\\source\\repos\\exexex2\\FishFactory\\FishFactoryView\\ReportOrders.rdlc", FileMode.Open));
+			reportViewer.LocalReport.LoadReportDefinition(new FileStream("C:\\Users\\user\\source\\repos\\ISEbd-22-Plaksina-A.V-FishFactory\\FishFactory\\FishFactoryView\\ReportOrders.rdlc", FileMode.Open));
 			Controls.Clear();
 			Controls.Add(reportViewer);
 			Controls.Add(panel);
