@@ -15,7 +15,7 @@ namespace FishFactoryDatabaseImplement
 		{
 			if (optionsBuilder.IsConfigured == false)
 			{
-				optionsBuilder.UseSqlServer(@"Data Source= WIN-11H7FS8O71V\SQLEXPRESS;Initial Catalog=FishFactoryDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
+				optionsBuilder.UseSqlServer(@"Data Source= WIN-11H7FS8O71V\SQLEXPRESS;Initial Catalog=FishFactoryHardDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
 			}
 			base.OnConfiguring(optionsBuilder);
 		}
