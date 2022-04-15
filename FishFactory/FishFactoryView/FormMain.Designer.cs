@@ -44,6 +44,7 @@ namespace FishFactoryView
 			this.CannedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+			this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -123,7 +124,8 @@ namespace FishFactoryView
 			// 
 			this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
-            this.изделияToolStripMenuItem});
+            this.изделияToolStripMenuItem,
+			this.клиентыToolStripMenuItem});
 			this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
 			this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
 			this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -173,6 +175,13 @@ namespace FishFactoryView
 			this.OrdersToolStripMenuItem.Text = "Список заказов";
 			this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
 			// 
+			// клиентыToolStripMenuItem
+			// 
+			this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
+			this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.клиентыToolStripMenuItem.Text = "Клиенты";
+			this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -213,5 +222,6 @@ namespace FishFactoryView
 		private System.Windows.Forms.ToolStripMenuItem ComponentCannedToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem CannedsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
 	}
 }

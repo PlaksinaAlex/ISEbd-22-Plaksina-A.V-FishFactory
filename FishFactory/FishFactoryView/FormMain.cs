@@ -13,7 +13,7 @@ using Unity;
 
 namespace FishFactoryView
 {
-	public partial class FormMain : Form
+	public partial class FormMain : System.Windows.Forms.Form
 	{
 		private readonly IOrderLogic _orderLogic;
 		private readonly IReportLogic _reportLogic;
@@ -160,6 +160,11 @@ namespace FishFactoryView
 				});
 				MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
+		}
+		private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var form = Program.Container.Resolve<FormClients>();
+			form.ShowDialog();
 		}
 	}
 }

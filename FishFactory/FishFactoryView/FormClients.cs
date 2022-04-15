@@ -17,8 +17,8 @@ namespace FishFactoryView
 		private readonly IClientLogic logic;
 		public FormClients(IClientLogic logic)
 		{
-			this.logic = logic;
 			InitializeComponent();
+			this.logic = logic;
 		}
 		private void LoadData()
 		{
