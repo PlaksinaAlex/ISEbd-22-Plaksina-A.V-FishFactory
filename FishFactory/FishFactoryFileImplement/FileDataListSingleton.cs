@@ -19,14 +19,19 @@ namespace FishFactoryFileImplement
 		private readonly string OrderFileName = "Order.xml";
 
 		private readonly string CannedFileName = "Canned.xml";
+
+		private readonly string ClientFileName = "Client.xml";
 		public List<Component> Components { get; set; }
 		public List<Order> Orders { get; set; }
 		public List<Canned> Canneds { get; set; }
+
+		public List<Client> Clients { get; set; }
 		private FileDataListSingleton()
 		{
 			Components = LoadComponents();
 			Orders = LoadOrders();
 			Canneds = LoadCanneds();
+			Clients = LoadClients();
 		}
 		public static FileDataListSingleton GetInstance()
 		{
@@ -41,6 +46,7 @@ namespace FishFactoryFileImplement
 			instance.SaveComponents();
 			instance.SaveOrders();
 			instance.SaveCanneds();
+			instance.SaveClients();
 
 		}
 		private List<Component> LoadComponents()
@@ -91,6 +97,7 @@ namespace FishFactoryFileImplement
 					list.Add(new Order
 					{
 						Id = Convert.ToInt32(elem.Attribute("Id").Value),
+						ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
 						CannedId = Convert.ToInt32(elem.Element("CannedId").Value),
 						Count = Convert.ToInt32(elem.Element("Count").Value),
 						Sum = Convert.ToDecimal(elem.Element("Sum").Value),
@@ -129,6 +136,28 @@ namespace FishFactoryFileImplement
 			}
 			return list;
 		}
+		private List<Client> LoadClients()
+		{
+			var list = new List<Client>();
+
+			if (File.Exists(ClientFileName))
+			{
+				XDocument xDocument = XDocument.Load(ClientFileName);
+				var xElements = xDocument.Root.Elements("Client").ToList();
+
+				foreach (var client in xElements)
+				{
+					list.Add(new Client
+					{
+						Id = Convert.ToInt32(client.Attribute("Id").Value),
+						ClientFIO = client.Element("ClientFIO").Value,
+						Email = client.Element("Email").Value,
+						Password = client.Element("Password").Value,
+					});
+				}
+			}
+			return list;
+		}
 		private void SaveComponents()
 		{
 			if (Components != null)
@@ -152,6 +181,7 @@ namespace FishFactoryFileImplement
 				{
 					xElement.Add(new XElement("Order",
 					new XAttribute("Id", order.Id),
+					new XElement("ClientId", order.ClientId),
 					new XElement("CannedId", order.CannedId),
 					new XElement("Count", order.Count),
 					new XElement("Sum", order.Sum),
@@ -185,6 +215,25 @@ namespace FishFactoryFileImplement
 				}
 				var xDocument = new XDocument(xElement);
 				xDocument.Save(CannedFileName);
+			}
+		}
+		private void SaveClients()
+		{
+			if (Clients != null)
+			{
+				var xElement = new XElement("Clients");
+
+				foreach (var client in Clients)
+				{
+					xElement.Add(new XElement("Client",
+					new XAttribute("Id", client.Id),
+					new XElement("ClientFIO", client.ClientFIO),
+					new XElement("Email", client.Email),
+					new XElement("Password", client.Password)));
+				}
+
+				XDocument xDocument = new XDocument(xElement);
+				xDocument.Save(ClientFileName);
 			}
 		}
 	}

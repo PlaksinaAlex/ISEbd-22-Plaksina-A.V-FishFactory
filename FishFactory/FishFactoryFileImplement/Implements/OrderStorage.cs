@@ -28,7 +28,9 @@ namespace FishFactoryFileImplement.Implements
 				return null;
 			}
 			return source.Orders
-				.Where(rec => rec.CannedId.ToString().Contains(model.CannedId.ToString()) || (model.DateFrom.GetHashCode() != 0 && model.DateTo.GetHashCode() != 0 && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+				.Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date)||
+				(model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) || 
+				(model.ClientId.HasValue && rec.ClientId == model.ClientId))
 				.Select(CreateModel)
 				.ToList();
 		}
@@ -71,6 +73,7 @@ namespace FishFactoryFileImplement.Implements
 		}
 		private Order CreateModel(OrderBindingModel model, Order order)
 		{
+			order.ClientId = (int)model.ClientId;
 			order.CannedId = model.CannedId;
 			order.Status = model.Status;
 			order.Sum = model.Sum;
@@ -91,7 +94,9 @@ namespace FishFactoryFileImplement.Implements
 				DateCreate = order.DateCreate,
 				DateImplement = order.DateImplement,
 				Count = order.Count,
-				CannedName = source.Canneds.FirstOrDefault(canned=>canned.Id==order.CannedId)?.CannedName
+				CannedName = source.Canneds.FirstOrDefault(canned=>canned.Id==order.CannedId)?.CannedName,
+				ClientId = order.ClientId,
+				ClientFIO = source.Clients.FirstOrDefault(rec => rec.Id == order.ClientId)?.ClientFIO,
 			};
 		}
 	}

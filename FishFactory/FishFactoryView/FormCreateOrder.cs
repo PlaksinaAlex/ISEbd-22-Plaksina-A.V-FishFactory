@@ -17,11 +17,13 @@ namespace FishFactoryView
 	{
 		private readonly ICannedLogic _logicP;
 		private readonly IOrderLogic _logicO;
-		public FormCreateOrder(ICannedLogic logicP, IOrderLogic logicO)
+		private readonly IClientLogic _logicС;
+		public FormCreateOrder(ICannedLogic logicP, IOrderLogic logicO, IClientLogic logicС)
 		{
 			InitializeComponent();
 			_logicP = logicP;
 			_logicO = logicO;
+			_logicС = logicС;
 		}
 	
 		private void CalcSum()
@@ -63,6 +65,7 @@ namespace FishFactoryView
 			{
 				_logicO.CreateOrder(new CreateOrderBindingModel
 				{
+					ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
 					CannedId = Convert.ToInt32(ComboBoxCanned.SelectedValue),
 					Count = Convert.ToInt32(TextBoxCount.Text),
 					Sum = Convert.ToDecimal(TextBoxSum.Text)
@@ -100,6 +103,14 @@ namespace FishFactoryView
 		{
 			try
 			{
+				var listC = _logicС.Read(null);
+				if (listC != null)
+				{
+					comboBoxClient.DisplayMember = "ClientFIO";
+					comboBoxClient.ValueMember = "Id";
+					comboBoxClient.DataSource = listC;
+					comboBoxClient.SelectedItem = null;
+				}
 				var list = _logicP.Read(null);
 				foreach (var component in list)
 				{

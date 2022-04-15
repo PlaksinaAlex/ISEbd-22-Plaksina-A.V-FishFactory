@@ -38,7 +38,7 @@ namespace FishFactoryView
 					dataGridView.DataSource = list;
 					dataGridView.Columns[0].Visible = false;
 					dataGridView.Columns[1].Visible = false;
-					dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+					dataGridView.Columns[2].Visible = false;
 				}
 			}
 			catch (Exception ex)
