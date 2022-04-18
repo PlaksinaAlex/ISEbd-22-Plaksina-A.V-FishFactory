@@ -30,8 +30,6 @@ namespace FishFactoryView
 		private void InitializeComponent()
 		{
 			this.ButtonCreateOrder = new System.Windows.Forms.Button();
-			this.ButtonTakeOrderInWork = new System.Windows.Forms.Button();
-			this.ButtonOrderReady = new System.Windows.Forms.Button();
 			this.ButtonIssuedOrder = new System.Windows.Forms.Button();
 			this.ButtonRef = new System.Windows.Forms.Button();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -45,12 +43,14 @@ namespace FishFactoryView
 			this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
 			this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// ButtonCreateOrder
 			// 
-			this.ButtonCreateOrder.Location = new System.Drawing.Point(689, 39);
+			this.ButtonCreateOrder.Location = new System.Drawing.Point(680, 68);
 			this.ButtonCreateOrder.Name = "ButtonCreateOrder";
 			this.ButtonCreateOrder.Size = new System.Drawing.Size(190, 60);
 			this.ButtonCreateOrder.TabIndex = 0;
@@ -58,29 +58,9 @@ namespace FishFactoryView
 			this.ButtonCreateOrder.UseVisualStyleBackColor = true;
 			this.ButtonCreateOrder.Click += new System.EventHandler(this.ButtonCreateOrder_Click);
 			// 
-			// ButtonTakeOrderInWork
-			// 
-			this.ButtonTakeOrderInWork.Location = new System.Drawing.Point(689, 117);
-			this.ButtonTakeOrderInWork.Name = "ButtonTakeOrderInWork";
-			this.ButtonTakeOrderInWork.Size = new System.Drawing.Size(190, 60);
-			this.ButtonTakeOrderInWork.TabIndex = 1;
-			this.ButtonTakeOrderInWork.Text = "Отдать на выполнение";
-			this.ButtonTakeOrderInWork.UseVisualStyleBackColor = true;
-			this.ButtonTakeOrderInWork.Click += new System.EventHandler(this.ButtonTakeOrderInWork_Click);
-			// 
-			// ButtonOrderReady
-			// 
-			this.ButtonOrderReady.Location = new System.Drawing.Point(689, 196);
-			this.ButtonOrderReady.Name = "ButtonOrderReady";
-			this.ButtonOrderReady.Size = new System.Drawing.Size(190, 60);
-			this.ButtonOrderReady.TabIndex = 2;
-			this.ButtonOrderReady.Text = "Заказ готов";
-			this.ButtonOrderReady.UseVisualStyleBackColor = true;
-			this.ButtonOrderReady.Click += new System.EventHandler(this.ButtonOrderReady_Click);
-			// 
 			// ButtonIssuedOrder
 			// 
-			this.ButtonIssuedOrder.Location = new System.Drawing.Point(689, 276);
+			this.ButtonIssuedOrder.Location = new System.Drawing.Point(680, 165);
 			this.ButtonIssuedOrder.Name = "ButtonIssuedOrder";
 			this.ButtonIssuedOrder.Size = new System.Drawing.Size(190, 60);
 			this.ButtonIssuedOrder.TabIndex = 3;
@@ -90,7 +70,7 @@ namespace FishFactoryView
 			// 
 			// ButtonRef
 			// 
-			this.ButtonRef.Location = new System.Drawing.Point(689, 354);
+			this.ButtonRef.Location = new System.Drawing.Point(680, 258);
 			this.ButtonRef.Name = "ButtonRef";
 			this.ButtonRef.Size = new System.Drawing.Size(190, 60);
 			this.ButtonRef.TabIndex = 4;
@@ -113,7 +93,8 @@ namespace FishFactoryView
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.отчетыToolStripMenuItem,
+			this.запускРаботToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(915, 24);
@@ -125,7 +106,8 @@ namespace FishFactoryView
 			this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
             this.изделияToolStripMenuItem,
-			this.клиентыToolStripMenuItem});
+			this.клиентыToolStripMenuItem,
+			this.исполнителиToolStripMenuItem});
 			this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
 			this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
 			this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -182,6 +164,20 @@ namespace FishFactoryView
 			this.клиентыToolStripMenuItem.Text = "Клиенты";
 			this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
 			// 
+			// исполнителиToolStripMenuItem
+			// 
+			this.исполнителиToolStripMenuItem.Name = "исполнителиToolStripMenuItem";
+			this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.исполнителиToolStripMenuItem.Text = "Исполнители";
+			this.исполнителиToolStripMenuItem.Click += new System.EventHandler(this.исполнителиToolStripMenuItem_Click);
+			// 
+			// запускРаботToolStripMenuItem
+			// 
+			this.запускРаботToolStripMenuItem.Name = "запускРаботToolStripMenuItem";
+			this.запускРаботToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+			this.запускРаботToolStripMenuItem.Text = "Запуск работ";
+			this.запускРаботToolStripMenuItem.Click += new System.EventHandler(this.запускРаботToolStripMenuItem_Click);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -190,8 +186,6 @@ namespace FishFactoryView
 			this.Controls.Add(this.dataGridView);
 			this.Controls.Add(this.ButtonRef);
 			this.Controls.Add(this.ButtonIssuedOrder);
-			this.Controls.Add(this.ButtonOrderReady);
-			this.Controls.Add(this.ButtonTakeOrderInWork);
 			this.Controls.Add(this.ButtonCreateOrder);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -209,8 +203,6 @@ namespace FishFactoryView
 		#endregion
 
 		private System.Windows.Forms.Button ButtonCreateOrder;
-		private System.Windows.Forms.Button ButtonTakeOrderInWork;
-		private System.Windows.Forms.Button ButtonOrderReady;
 		private System.Windows.Forms.Button ButtonIssuedOrder;
 		private System.Windows.Forms.Button ButtonRef;
 		private System.Windows.Forms.DataGridView dataGridView;
@@ -223,5 +215,7 @@ namespace FishFactoryView
 		private System.Windows.Forms.ToolStripMenuItem CannedsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem запускРаботToolStripMenuItem;
 	}
 }
