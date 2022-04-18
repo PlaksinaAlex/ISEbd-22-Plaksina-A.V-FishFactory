@@ -34,6 +34,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
         {
             _orderStorage.Insert(new OrderBindingModel
             {
+                ClientId = model.ClientId,
                 CannedId = model.CannedId,
                 Count = model.Count,
                 Sum = model.Sum,
@@ -58,6 +59,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -83,6 +85,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -108,6 +111,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,

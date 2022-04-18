@@ -38,7 +38,7 @@ namespace FishFactoryView
 					dataGridView.DataSource = list;
 					dataGridView.Columns[0].Visible = false;
 					dataGridView.Columns[1].Visible = false;
-					dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+					dataGridView.Columns[2].Visible = false;
 				}
 			}
 			catch (Exception ex)
@@ -160,6 +160,11 @@ namespace FishFactoryView
 				});
 				MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
+		}
+		private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var form = Program.Container.Resolve<FormClients>();
+			form.ShowDialog();
 		}
 	}
 }

@@ -37,12 +37,14 @@ namespace FishFactoryView
 			this.TextBoxSum = new System.Windows.Forms.TextBox();
 			this.ButtonCancel = new System.Windows.Forms.Button();
 			this.ButtonSave = new System.Windows.Forms.Button();
+			this.labelClient = new System.Windows.Forms.Label();
+			this.comboBoxClient = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(28, 21);
+			this.label1.Location = new System.Drawing.Point(38, 44);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(56, 15);
 			this.label1.TabIndex = 0;
@@ -51,7 +53,7 @@ namespace FishFactoryView
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(28, 52);
+			this.label2.Location = new System.Drawing.Point(28, 79);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(75, 15);
 			this.label2.TabIndex = 1;
@@ -60,7 +62,7 @@ namespace FishFactoryView
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(28, 91);
+			this.label3.Location = new System.Drawing.Point(38, 116);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(48, 15);
 			this.label3.TabIndex = 2;
@@ -69,7 +71,7 @@ namespace FishFactoryView
 			// ComboBoxCanned
 			// 
 			this.ComboBoxCanned.FormattingEnabled = true;
-			this.ComboBoxCanned.Location = new System.Drawing.Point(123, 18);
+			this.ComboBoxCanned.Location = new System.Drawing.Point(123, 41);
 			this.ComboBoxCanned.Name = "ComboBoxCanned";
 			this.ComboBoxCanned.Size = new System.Drawing.Size(189, 23);
 			this.ComboBoxCanned.TabIndex = 3;
@@ -77,7 +79,7 @@ namespace FishFactoryView
 			// 
 			// TextBoxCount
 			// 
-			this.TextBoxCount.Location = new System.Drawing.Point(123, 47);
+			this.TextBoxCount.Location = new System.Drawing.Point(123, 76);
 			this.TextBoxCount.Name = "TextBoxCount";
 			this.TextBoxCount.Size = new System.Drawing.Size(189, 23);
 			this.TextBoxCount.TabIndex = 4;
@@ -85,14 +87,14 @@ namespace FishFactoryView
 			// 
 			// TextBoxSum
 			// 
-			this.TextBoxSum.Location = new System.Drawing.Point(123, 83);
+			this.TextBoxSum.Location = new System.Drawing.Point(123, 113);
 			this.TextBoxSum.Name = "TextBoxSum";
 			this.TextBoxSum.Size = new System.Drawing.Size(189, 23);
 			this.TextBoxSum.TabIndex = 5;
 			// 
 			// ButtonCancel
 			// 
-			this.ButtonCancel.Location = new System.Drawing.Point(231, 115);
+			this.ButtonCancel.Location = new System.Drawing.Point(233, 152);
 			this.ButtonCancel.Name = "ButtonCancel";
 			this.ButtonCancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.ButtonCancel.Size = new System.Drawing.Size(79, 26);
@@ -103,7 +105,7 @@ namespace FishFactoryView
 			// 
 			// ButtonSave
 			// 
-			this.ButtonSave.Location = new System.Drawing.Point(123, 115);
+			this.ButtonSave.Location = new System.Drawing.Point(123, 152);
 			this.ButtonSave.Name = "ButtonSave";
 			this.ButtonSave.Size = new System.Drawing.Size(88, 26);
 			this.ButtonSave.TabIndex = 7;
@@ -111,11 +113,30 @@ namespace FishFactoryView
 			this.ButtonSave.UseVisualStyleBackColor = true;
 			this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
 			// 
+			// labelClient
+			// 
+			this.labelClient.AutoSize = true;
+			this.labelClient.Location = new System.Drawing.Point(45, 9);
+			this.labelClient.Name = "labelClient";
+			this.labelClient.Size = new System.Drawing.Size(49, 15);
+			this.labelClient.TabIndex = 8;
+			this.labelClient.Text = "Клиент:";
+			// 
+			// comboBoxClient
+			// 
+			this.comboBoxClient.FormattingEnabled = true;
+			this.comboBoxClient.Location = new System.Drawing.Point(123, 6);
+			this.comboBoxClient.Name = "comboBoxClient";
+			this.comboBoxClient.Size = new System.Drawing.Size(189, 23);
+			this.comboBoxClient.TabIndex = 9;
+			// 
 			// FormCreateOrder
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(366, 166);
+			this.ClientSize = new System.Drawing.Size(377, 204);
+			this.Controls.Add(this.comboBoxClient);
+			this.Controls.Add(this.labelClient);
 			this.Controls.Add(this.ButtonSave);
 			this.Controls.Add(this.ButtonCancel);
 			this.Controls.Add(this.TextBoxSum);
@@ -142,5 +163,7 @@ namespace FishFactoryView
 		private System.Windows.Forms.TextBox TextBoxSum;
 		private System.Windows.Forms.Button ButtonCancel;
 		private System.Windows.Forms.Button ButtonSave;
+		private System.Windows.Forms.Label labelClient;
+		private System.Windows.Forms.ComboBox comboBoxClient;
 	}
 }
