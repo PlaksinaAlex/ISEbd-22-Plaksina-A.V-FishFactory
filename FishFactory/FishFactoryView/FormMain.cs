@@ -13,7 +13,7 @@ using Unity;
 
 namespace FishFactoryView
 {
-	public partial class FormMain : System.Windows.Forms.Form
+	public partial class FormMain : Form
 	{
 		private readonly IOrderLogic _orderLogic;
 		private readonly IReportLogic _reportLogic;
