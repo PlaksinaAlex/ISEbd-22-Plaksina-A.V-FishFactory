@@ -133,33 +133,5 @@ namespace FishFactoryView
 		{
 			LoadData();
 		}
-
-		private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			var form = Program.Container.Resolve<FormReportOrders>();
-			form.ShowDialog();
-		}
-
-		private void ComponentCannedToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			var form = Program.Container.Resolve<FormReportCannedComponents>();
-			form.ShowDialog();
-		}
-
-		private void CannedsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			using var dialog = new SaveFileDialog
-			{
-				Filter = "docx|*.docx"
-			};
-			if (dialog.ShowDialog() == DialogResult.OK)
-			{
-				_reportLogic.SaveCannedsToWordFile(new ReportBindingModel
-				{
-					FileName = dialog.FileName
-				});
-				MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-		}
 	}
 }
