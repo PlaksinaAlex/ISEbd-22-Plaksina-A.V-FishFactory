@@ -48,11 +48,15 @@ namespace FishFactoryView
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<ICannedStorage, CannedStorage>(new
 			HierarchicalLifetimeManager());
+			currentContainer.RegisterType<IWareHouseStorage, WareHouseStorage>(new
+			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IComponentLogic, ComponentLogic>(new
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IOrderLogic, OrderLogic>(new
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<ICannedLogic, CannedLogic>(new
+			HierarchicalLifetimeManager());
+			currentContainer.RegisterType<IWareHouseLogic, WareHouseLogic>(new
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IReportLogic, ReportLogic>(new
 			HierarchicalLifetimeManager());

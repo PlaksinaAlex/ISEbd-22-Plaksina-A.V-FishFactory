@@ -12,8 +12,14 @@ namespace FishFactoryContracts.BusinessLogicsContracts
 	{
 		List<ReportCannedComponentViewModel> GetCannedComponent();
 		List<ReportOrdersViewModel> GetOrders(ReportBindingModel model);
+		List<ReportOrdersByDateViewModel> GetOrdersByDate();
+		List<ReportWareHouseComponentViewModel> GetWareHouseComponent();
 		void SaveCannedsToWordFile(ReportBindingModel model);
+		void SaveWareHousesToWordFile(ReportBindingModel model);
 		void SaveCannedComponentToExcelFile(ReportBindingModel model);
+		void SaveWareHouseComponentToExcelFile(ReportBindingModel model);
 		void SaveOrdersToPdfFile(ReportBindingModel model);
+		void SaveOrdersByDateToPdfFile(ReportBindingModel model);
+
 	}
 }

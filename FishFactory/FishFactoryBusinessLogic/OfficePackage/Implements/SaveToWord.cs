@@ -17,6 +17,8 @@ namespace FishFactoryBusinessLogic.OfficePackage.Implements
 
 		private Body _docBody;
 
+		private Table _table;
+
 		private static JustificationValues GetJustificationValues(WordJustificationType type)
 		{
 			return type switch
@@ -96,6 +98,86 @@ namespace FishFactoryBusinessLogic.OfficePackage.Implements
 			_wordDocument.MainDocumentPart.Document.Save();
 
 			_wordDocument.Close();
+		}
+		protected override void CreateTable()
+		{
+			_table = new Table();
+			TableProperties tblProp = new TableProperties(
+			   new TableBorders(
+				   new TopBorder
+				   {
+					   Val = new EnumValue<BorderValues>(BorderValues.Single),
+					   Size = 14
+				   },
+				   new BottomBorder
+				   {
+					   Val = new EnumValue<BorderValues>(BorderValues.Single),
+					   Size = 14
+				   },
+				   new LeftBorder
+				   {
+					   Val = new EnumValue<BorderValues>(BorderValues.Single),
+					   Size = 14
+				   },
+				   new RightBorder
+				   {
+					   Val = new EnumValue<BorderValues>(BorderValues.Single),
+					   Size = 14
+				   },
+				   new InsideHorizontalBorder
+				   {
+					   Val = new EnumValue<BorderValues>(BorderValues.Single),
+					   Size = 10
+				   },
+				   new InsideVerticalBorder
+				   {
+					   Val = new EnumValue<BorderValues>(BorderValues.Single),
+					   Size = 12
+				   }
+			   )
+		   );
+			_docBody.AppendChild(_table);
+			_table.AppendChild(tblProp);
+		}
+		protected override void CreateTableRow(WordTableRow row)
+		{
+			var table = _docBody.GetFirstChild<Table>();
+			if (row != null && table != null)
+			{
+				var docTableRow = new TableRow();
+
+				foreach (var cell in row.Cells)
+				{
+					var docParagraph = new Paragraph();
+					var docRun = new Run();
+					if (row.Bolded)
+					{
+						var properties = new RunProperties();
+						properties.AppendChild(new Bold());
+						docRun.AppendChild(properties);
+					}
+					docRun.AppendChild(new Text
+					{
+						Text = cell.Text
+					});
+					docParagraph.AppendChild(docRun);
+
+					var docTableCell = new TableCell();
+					docTableCell.AppendChild(docParagraph);
+					docTableCell.AppendChild(
+						new TableCellProperties(
+							new TableCellWidth
+							{
+								Type = TableWidthUnitValues.Dxa,
+								Width = cell.Width
+							}
+					));
+
+					docTableRow.Append(docTableCell);
+				}
+
+				table.Append(docTableRow);
+			}
 		}
 	}
 }
