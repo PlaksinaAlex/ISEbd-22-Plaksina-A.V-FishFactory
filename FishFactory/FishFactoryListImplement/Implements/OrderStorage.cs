@@ -135,14 +135,17 @@ namespace FishFactoryListImplement.Implements
                 }
             }
             string implementerFIO = null;
-            foreach (var implementer in source.Implementers)
-            {
-                if (implementer.Id == order.ImplementerId)
+            if (order.ImplementerId!=null)
+			{
+                foreach (var implementer in source.Implementers)
                 {
-                    implementerFIO = implementer.ImplementerFIO;
-                    break;
+                    if (implementer.Id == order.ImplementerId)
+                    {
+                        implementerFIO = implementer.ImplementerFIO;
+                        break;
+                    }
                 }
-            }
+            }    
             return new OrderViewModel
             {
                 Id = order.Id,
