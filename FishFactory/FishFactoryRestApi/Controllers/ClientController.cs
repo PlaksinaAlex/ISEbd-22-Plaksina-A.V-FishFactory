@@ -13,17 +13,19 @@ namespace FishFactoryRestApi.Controllers
 	[ApiController]
 	public class ClientController : ControllerBase
 	{
-		private readonly IClientLogic _logic;
+		private readonly IClientLogic _clientlogic;
 
-		public ClientController(IClientLogic logic)
+		private readonly IMessageInfoLogic _messageLogic;
+		public ClientController(IClientLogic clientlogic, IMessageInfoLogic messageLogic)
 		{
-			_logic = logic;
+			_clientlogic = clientlogic;
+			_messageLogic = messageLogic;
 		}
 
 		[HttpGet]
 		public ClientViewModel Login(string login, string password)
 		{
-			var list = _logic.Read(new ClientBindingModel
+			var list = _clientlogic.Read(new ClientBindingModel
 			{
 				Email = login,
 				Password = password
@@ -31,8 +33,13 @@ namespace FishFactoryRestApi.Controllers
 			return (list != null && list.Count > 0) ? list[0] : null;
 		}
 
-		[HttpPost] public void Register(ClientBindingModel model) => _logic.CreateOrUpdate(model);
+		[HttpPost] 
+		public void Register(ClientBindingModel model) => _clientlogic.CreateOrUpdate(model);
 
-		[HttpPost] public void UpdateData(ClientBindingModel model) => _logic.CreateOrUpdate(model);
+		[HttpPost] 
+		public void UpdateData(ClientBindingModel model) => _clientlogic.CreateOrUpdate(model);
+
+		[HttpGet]
+		public List<MessageInfoViewModel> GetMessages(int clientId) => _messageLogic.Read(new MessageInfoBindingModel { ClientId = clientId });
 	}
 }

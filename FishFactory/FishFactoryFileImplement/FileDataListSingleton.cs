@@ -23,11 +23,14 @@ namespace FishFactoryFileImplement
 		private readonly string ClientFileName = "Client.xml";
 
 		private readonly string ImplementerFileName = "Implementer.xml";
+
+		private readonly string MessageInfoFileName = "MessageInfo.xml";
 		public List<Component> Components { get; set; }
 		public List<Order> Orders { get; set; }
 		public List<Canned> Canneds { get; set; }
 		public List<Client> Clients { get; set; }
 		public List<Implementer> Implementers { get; set; }
+		public List<MessageInfo> MessageInfoes { get; set; }
 		private FileDataListSingleton()
 		{
 			Components = LoadComponents();
@@ -35,6 +38,7 @@ namespace FishFactoryFileImplement
 			Canneds = LoadCanneds();
 			Clients = LoadClients();
 			Implementers = LoadImplementers();
+			MessageInfoes = LoadMessageInfoes();
 		}
 		public static FileDataListSingleton GetInstance()
 		{
@@ -51,6 +55,7 @@ namespace FishFactoryFileImplement
 			instance.SaveCanneds();
 			instance.SaveClients();
 			instance.SaveImplementers();
+			instance.SaveMessageInfoes();
 		}
 		private List<Component> LoadComponents()
 		{
@@ -162,6 +167,7 @@ namespace FishFactoryFileImplement
 			}
 			return list;
 		}
+		
 		private List<Implementer> LoadImplementers()
 		{
 			var list = new List<Implementer>();
@@ -179,6 +185,30 @@ namespace FishFactoryFileImplement
 						ImplementerFIO = elem.Element("ImplementerFIO").Value,
 						WorkingTime = Convert.ToInt32(elem.Element("WorkingTime").Value),
 						PauseTime = Convert.ToInt32(elem.Element("PauseTime").Value),
+					});
+				}
+			}
+			return list;
+		}
+		private List<MessageInfo> LoadMessageInfoes()
+		{
+			var list = new List<MessageInfo>();
+
+			if (File.Exists(MessageInfoFileName))
+			{
+				XDocument xDocument = XDocument.Load(MessageInfoFileName);
+				var xElements = xDocument.Root.Elements("MessageInfo").ToList();
+
+				foreach (var elem in xElements)
+				{
+					list.Add(new MessageInfo
+					{
+						MessageId = elem.Attribute("MessageId").Value,
+						ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
+						SenderName = elem.Element("SenderName").Value,
+						DateDelivery = Convert.ToDateTime(elem.Element("DateDelivery")?.Value),
+						Subject = elem.Element("Subject").Value,
+						Body = elem.Element("Body").Value,
 					});
 				}
 			}
@@ -280,6 +310,28 @@ namespace FishFactoryFileImplement
 
 				XDocument xDocument = new XDocument(xElement);
 				xDocument.Save(ImplementerFileName);
+			}
+		}
+		private void SaveMessageInfoes()
+		{
+			if (MessageInfoes != null)
+			{
+				var xElement = new XElement("MessageInfoes");
+
+				foreach (var message in MessageInfoes)
+				{
+					xElement.Add(new XElement("MessageInfo",
+					new XAttribute("MessageId", message.MessageId),
+					new XElement("ClientId", message.ClientId),
+					new XElement("SenderName", message.SenderName),
+					new XElement("DateDelivery", message.DateDelivery),
+					new XElement("Subject", message.Subject),
+					new XElement("Body", message.Body)
+					));
+				}
+
+				XDocument xDocument = new XDocument(xElement);
+				xDocument.Save(MessageInfoFileName);
 			}
 		}
 	}
