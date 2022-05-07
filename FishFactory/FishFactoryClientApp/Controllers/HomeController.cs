@@ -142,5 +142,14 @@ namespace FishFactoryClientApp.Controllers
 			CannedViewModel cann = APIClient.GetRequest<CannedViewModel>($"api/main/getcanned?cannedId={canned}");
 			return count * cann.Price;
 		}
+		[HttpGet]
+		public IActionResult Mail()
+		{
+			if (Program.Client == null)
+			{
+				return Redirect("~/Home/Enter");
+			}
+			return View(APIClient.GetRequest<List<MessageInfoViewModel>>($"api/client/getmessages?clientId={Program.Client.Id}"));
+		}
 	}
 }

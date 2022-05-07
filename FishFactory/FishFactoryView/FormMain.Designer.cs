@@ -44,6 +44,7 @@ namespace FishFactoryView
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
 			this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.письмаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -94,7 +95,8 @@ namespace FishFactoryView
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
             this.отчетыToolStripMenuItem,
-			this.запускРаботToolStripMenuItem});
+			this.запускРаботToolStripMenuItem,
+			 this.письмаToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(915, 24);
@@ -178,6 +180,13 @@ namespace FishFactoryView
 			this.запускРаботToolStripMenuItem.Text = "Запуск работ";
 			this.запускРаботToolStripMenuItem.Click += new System.EventHandler(this.запускРаботToolStripMenuItem_Click);
 			// 
+			// письмаToolStripMenuItem
+			// 
+			this.письмаToolStripMenuItem.Name = "письмаToolStripMenuItem";
+			this.письмаToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+			this.письмаToolStripMenuItem.Text = "Письма";
+			this.письмаToolStripMenuItem.Click += new System.EventHandler(this.письмаToolStripMenuItem_Click);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -217,5 +226,6 @@ namespace FishFactoryView
 		private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem запускРаботToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem письмаToolStripMenuItem;
 	}
 }
