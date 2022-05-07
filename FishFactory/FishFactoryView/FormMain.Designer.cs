@@ -218,14 +218,7 @@ namespace FishFactoryView
 			this.пополнениеСкладаToolStripMenuItem.Name = "пополнениеСкладаToolStripMenuItem";
 			this.пополнениеСкладаToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
 			this.пополнениеСкладаToolStripMenuItem.Text = "Пополнение склада";
-		    this.пополнениеСкладаToolStripMenuItem.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem_Click);
-			// 
-			// клиентыToolStripMenuItem
-			// 
-			this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-			this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.клиентыToolStripMenuItem.Text = "Клиенты";
-			this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
+		  this.пополнениеСкладаToolStripMenuItem.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem_Click);
 			// 
 			// FormMain
 			// 
