@@ -33,15 +33,22 @@ namespace FishFactoryRestApi
 			services.AddTransient<IClientStorage, ClientStorage>();
 			services.AddTransient<IOrderStorage, OrderStorage>();
 			services.AddTransient<ICannedStorage, CannedStorage>();
+			services.AddTransient<IComponentStorage, ComponentStorage>();
+			services.AddTransient<IWareHouseStorage, WareHouseStorage>();
 
 			services.AddTransient<IOrderLogic, OrderLogic>();
 			services.AddTransient<IClientLogic, ClientLogic>();
 			services.AddTransient<ICannedLogic, CannedLogic>();
-
+			services.AddTransient<IComponentLogic, ComponentLogic>();
+			services.AddTransient<IWareHouseLogic, WareHouseLogic>();
+			services.AddControllers().AddNewtonsoftJson();
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "FishFactoryRestApi", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo 
+				{
+					Title = "FishFactoryRestApi", 
+					Version = "v1" });
 			});
 		}
 
