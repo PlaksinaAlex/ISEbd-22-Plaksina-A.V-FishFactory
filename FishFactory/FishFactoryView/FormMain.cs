@@ -141,5 +141,10 @@ namespace FishFactoryView
 			_workModeling.DoWork(_implementerLogic, _orderLogic);
 			LoadData();
 		}
+		private void письмаToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var form = Program.Container.Resolve<FormMessageInfoes>();
+			form.ShowDialog();
+		}
 	}
 }
