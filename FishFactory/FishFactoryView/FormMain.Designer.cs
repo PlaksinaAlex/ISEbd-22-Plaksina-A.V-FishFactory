@@ -48,6 +48,7 @@ namespace FishFactoryView
 			this.складыСКомпонентамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.списокЗаказовПоДатамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.пополнениеСкладаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -130,7 +131,8 @@ namespace FishFactoryView
 			this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
             this.изделияToolStripMenuItem,
-			this.складыToolStripMenuItem});
+			this.складыToolStripMenuItem,
+			this.клиентыToolStripMenuItem});
 			this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
 			this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
 			this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -216,7 +218,7 @@ namespace FishFactoryView
 			this.пополнениеСкладаToolStripMenuItem.Name = "пополнениеСкладаToolStripMenuItem";
 			this.пополнениеСкладаToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
 			this.пополнениеСкладаToolStripMenuItem.Text = "Пополнение склада";
-		    this.пополнениеСкладаToolStripMenuItem.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem_Click);
+		  this.пополнениеСкладаToolStripMenuItem.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem_Click);
 			// 
 			// FormMain
 			// 
@@ -263,5 +265,6 @@ namespace FishFactoryView
 		private System.Windows.Forms.ToolStripMenuItem складыСКомпонентамиToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem списокЗаказовПоДатамToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
 	}
 }

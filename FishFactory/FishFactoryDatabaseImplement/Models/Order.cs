@@ -12,6 +12,7 @@ namespace FishFactoryDatabaseImplement.Models
     public class Order
     {
         public int Id { get; set; }
+        public int ClientId { get; set; }
         public int CannedId { get; set; }
         [Required]
         public int Count { get; set; }
@@ -22,7 +23,7 @@ namespace FishFactoryDatabaseImplement.Models
         [Required]
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
-
         public virtual Canned Canned { get; set; }
+        public virtual Client Client { get; set; }
     }
 }
