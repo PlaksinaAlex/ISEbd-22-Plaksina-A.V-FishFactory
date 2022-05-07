@@ -60,6 +60,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ClientId = order.ClientId,
+                ImplementerId = model.ImplementerId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -86,6 +87,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ClientId = order.ClientId,
+                ImplementerId = model.ImplementerId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -112,6 +114,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
