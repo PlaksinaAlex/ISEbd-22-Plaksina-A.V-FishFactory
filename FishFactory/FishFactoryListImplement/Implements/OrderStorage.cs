@@ -36,7 +36,7 @@ namespace FishFactoryListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.CannedId.ToString().Contains(model.CannedId.ToString()))
+                if (order.CannedId.ToString().Contains(model.CannedId.ToString()) || (model.DateFrom.GetHashCode() != 0 && model.DateTo.GetHashCode() != 0 && order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo))
                 {
                     result.Add(CreateModel(order));
                 }
