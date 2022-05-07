@@ -17,10 +17,14 @@ namespace FishFactoryDatabaseImplement.Implements
         {
             using (FishFactoryDatabase context = new FishFactoryDatabase())
             {
-                return context.Orders.Include(rec => rec.Canned)
+                return context.Orders
+                    .Include(rec => rec.Canned)
+                    .Include(rec => rec.Client)
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
+                    ClientId = rec.ClientId,
+                    ClientFIO = rec.Client.ClientFIO,
                     CannedId = rec.CannedId,
                     CannedName = rec.Canned.CannedName,
                     Count = rec.Count,
@@ -40,11 +44,17 @@ namespace FishFactoryDatabaseImplement.Implements
             }
             using (FishFactoryDatabase context = new FishFactoryDatabase())
             {
-                return context.Orders.Include(rec => rec.Canned)
-                .Where(rec => rec.CannedId == model.CannedId || (model.DateFrom.GetHashCode() != 0 && model.DateTo.GetHashCode() != 0 && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+                return context.Orders
+                    .Include(rec => rec.Canned)
+                    .Include(rec => rec.Client)
+                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) 
+                || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) 
+                || (model.ClientId.HasValue && rec.ClientId == model.ClientId))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
+                    ClientId = rec.ClientId,
+                    ClientFIO = rec.Client.ClientFIO,
                     CannedId = rec.CannedId,
                     CannedName = rec.Canned.CannedName,
                     Count = rec.Count,
@@ -64,12 +74,16 @@ namespace FishFactoryDatabaseImplement.Implements
             }
             using (FishFactoryDatabase context = new FishFactoryDatabase())
             {
-                Order order = context.Orders.Include(rec => rec.Canned)
+                Order order = context.Orders
+                    .Include(rec => rec.Canned)
+                    .Include(rec => rec.Client)
                 .FirstOrDefault(rec => rec.Id == model.Id);
                 return order != null ?
                 new OrderViewModel
                 {
                     Id = order.Id,
+                    ClientId = order.ClientId,
+                    ClientFIO = order.Client.ClientFIO,
                     CannedId = order.CannedId,
                     CannedName = order.Canned.CannedName,
                     Count = order.Count,
@@ -87,6 +101,7 @@ namespace FishFactoryDatabaseImplement.Implements
             {
                 Order order = new Order
                 {
+                    ClientId = model.ClientId.Value,
                     CannedId = model.CannedId,
                     Count = model.Count,
                     Sum = model.Sum,
@@ -109,6 +124,7 @@ namespace FishFactoryDatabaseImplement.Implements
                 {
                     throw new Exception("Элемент не найден");
                 }
+                element.ClientId = model.ClientId.Value;
                 element.CannedId = model.CannedId;
                 element.Count = model.Count;
                 element.Sum = model.Sum;

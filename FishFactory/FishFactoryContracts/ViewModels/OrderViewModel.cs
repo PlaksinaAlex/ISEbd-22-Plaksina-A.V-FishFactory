@@ -11,7 +11,12 @@ namespace FishFactoryContracts.ViewModels
 	public class OrderViewModel
 	{
 		public int Id { get; set; }
+
+		public int ClientId { get; set; }
 		public int CannedId { get; set; }
+
+		[DisplayName("Клиент")]
+		public string ClientFIO { get; set; }
 
 		[DisplayName("Консервы")]
 		public string CannedName { get; set; }
