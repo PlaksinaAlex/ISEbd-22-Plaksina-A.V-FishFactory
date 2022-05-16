@@ -14,6 +14,8 @@ namespace FishFactoryContracts.Enums
 
 		Готов = 2,
 
-		Выдан = 3
+		Выдан = 3,
+
+		Требуются_материалы = 4
 	}
 }

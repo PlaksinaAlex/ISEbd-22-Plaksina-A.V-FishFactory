@@ -23,11 +23,14 @@ namespace FishFactoryFileImplement
 		private readonly string WareHouseFileName = "WareHouse.xml";
 
 		private readonly string ClientFileName = "Client.xml";
+
+		private readonly string ImplementerFileName = "Implementer.xml";
 		public List<Component> Components { get; set; }
 		public List<Order> Orders { get; set; }
 		public List<Canned> Canneds { get; set; }
 		public List<WareHouse> WareHouses { get; set; }
 		public List<Client> Clients { get; set; }
+		public List<Implementer> Implementers { get; set; }
 		private FileDataListSingleton()
 		{
 			Components = LoadComponents();
@@ -35,6 +38,7 @@ namespace FishFactoryFileImplement
 			Canneds = LoadCanneds();
 			WareHouses = LoadWareHouses();
 			Clients = LoadClients();
+			Implementers = LoadImplementers();
 		}
 		public static FileDataListSingleton GetInstance()
 		{

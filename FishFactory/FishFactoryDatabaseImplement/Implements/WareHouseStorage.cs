@@ -166,42 +166,50 @@ namespace FishFactoryDatabaseImplement.Implements
         }
         public bool WriteOffFromWarehouses(Dictionary<int, (string, int)> components, int writeOffCount)
         {
-            using var context = new FishFactoryDatabase();
-            using var transaction = context.Database.BeginTransaction();
-            try
+            using (var context = new FishFactoryDatabase())
             {
-                foreach (KeyValuePair<int, (string, int)> component in components)
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    int count = component.Value.Item2 * writeOffCount;
-                    IEnumerable<WareHouseComponent> warehouseComponents = context.WareHouseComponents
-                        .Where(warehouse => warehouse.ComponentId == component.Key);
-                    foreach (WareHouseComponent warehouseComponent in warehouseComponents)
+                    try
                     {
-                        if (warehouseComponent.Count <= count)
+                        foreach (KeyValuePair<int, (string, int)> component in components)
                         {
-                            count -= warehouseComponent.Count;
-                            context.WareHouseComponents.Remove(warehouseComponent);
+                            int count = component.Value.Item2 * writeOffCount;
+                            IEnumerable<WareHouseComponent> warehouseComponents = context.WareHouseComponents
+                                .Where(warehouse => warehouse.ComponentId == component.Key);
+                            if (warehouseComponents.Sum(warehouseComponent => warehouseComponent.Count) < count)
+                            {
+                                throw new Exception("Недостаточно комнонентов");
+                            }
+                            foreach (WareHouseComponent warehouseComponent in warehouseComponents)
+                            {
+                                if (warehouseComponent.Count <= count)
+                                {
+                                    count -= warehouseComponent.Count;
+                                    context.WareHouseComponents.Remove(warehouseComponent);
+                                }
+                                else
+                                {
+                                    warehouseComponent.Count -= count;
+                                    count = 0;
+                                }
+                                if (count == 0)
+                                {
+                                    break;
+                                }
+                            }
+
                         }
-                        else
-                        {
-                            warehouseComponent.Count -= count;
-                            count = 0;
-                            break;
-                        }
+                        context.SaveChanges();
+                        transaction.Commit();
+                        return true;
                     }
-                    if (count != 0)
+                    catch
                     {
-                        throw new Exception("Недостаточно компонентов на складе");
+                        transaction.Rollback();
+                        return false;
                     }
                 }
-                context.SaveChanges();
-                transaction.Commit();
-                return true;
-            }
-            catch
-            {
-                transaction.Rollback();
-                throw;
             }
         }
     }
