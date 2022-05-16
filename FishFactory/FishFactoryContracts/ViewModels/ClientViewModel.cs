@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using FishFactoryContracts.Attributes;
 
 namespace FishFactoryContracts.ViewModels
 {
@@ -11,13 +12,13 @@ namespace FishFactoryContracts.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayName("ФИО клиента")]
+        [Column(title: "ФИО", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string ClientFIO { get; set; }
 
-        [DisplayName("Логин")]
+        [Column(title: "Логин", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string Email { get; set; }
 
-        [DisplayName("Пароль")]
+        [Column(title: "Пароль", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string Password { get; set; }
     }
 }
