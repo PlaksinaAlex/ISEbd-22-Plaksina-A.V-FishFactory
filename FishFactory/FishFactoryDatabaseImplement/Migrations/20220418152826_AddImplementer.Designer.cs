@@ -4,14 +4,16 @@ using FishFactoryDatabaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FishFactoryDatabaseImplement.Migrations
 {
     [DbContext(typeof(FishFactoryDatabase))]
-    partial class FishFactoryDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20220418152826_AddImplementer")]
+    partial class AddImplementer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,54 +169,6 @@ namespace FishFactoryDatabaseImplement.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouse", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ResponsibleFace")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WareHouseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WareHouses");
-                });
-
-            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouseComponent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ComponentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WareHouseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComponentId");
-
-                    b.HasIndex("WareHouseId");
-
-                    b.ToTable("WareHouseComponents");
-                });
-
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.CannedComponent", b =>
                 {
                     b.HasOne("FishFactoryDatabaseImplement.Models.Canned", "Canned")
@@ -259,25 +213,6 @@ namespace FishFactoryDatabaseImplement.Migrations
                     b.Navigation("Implementer");
                 });
 
-            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouseComponent", b =>
-                {
-                    b.HasOne("FishFactoryDatabaseImplement.Models.Component", "Component")
-                        .WithMany("WareHouseComponents")
-                        .HasForeignKey("ComponentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FishFactoryDatabaseImplement.Models.WareHouse", "WareHouse")
-                        .WithMany("WareHouseComponents")
-                        .HasForeignKey("WareHouseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Component");
-
-                    b.Navigation("WareHouse");
-                });
-
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.Canned", b =>
                 {
                     b.Navigation("CannedComponents");
@@ -293,13 +228,6 @@ namespace FishFactoryDatabaseImplement.Migrations
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.Component", b =>
                 {
                     b.Navigation("CannedComponents");
-
-                    b.Navigation("WareHouseComponents");
-                });
-
-            modelBuilder.Entity("FishFactoryDatabaseImplement.Models.WareHouse", b =>
-                {
-                    b.Navigation("WareHouseComponents");
                 });
 
             modelBuilder.Entity("FishFactoryDatabaseImplement.Models.Implementer", b =>
