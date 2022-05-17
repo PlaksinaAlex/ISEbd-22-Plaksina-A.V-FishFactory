@@ -5,34 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using FishFactoryContracts.Enums;
+using FishFactoryContracts.Attributes;
 
 namespace FishFactoryContracts.ViewModels
 {
 	public class OrderViewModel
 	{
+		[Column(title: "Номер", width: 50)]
 		public int Id { get; set; }
-
 		public int ClientId { get; set; }
 		public int? ImplementerId { get; set; }
 		public int CannedId { get; set; }
 
-		[DisplayName("Клиент")]
+		[Column(title: "Клиент", width: 70)]
 		public string ClientFIO { get; set; }
 
-		[DisplayName("Исполнитель")]
+		[Column(title: "Исполнитель", width: 100)]
 		public string ImplementerFIO { get; set; }
 
-		[DisplayName("Консервы")]
+		[Column(title: "Консервы", gridViewAutoSize: GridViewAutoSize.Fill)]
 		public string CannedName { get; set; }
-		[DisplayName("Количество")]
+
+		[Column(title: "Количество", width: 80)]
 		public int Count { get; set; }
-		[DisplayName("Сумма")]
+
+		[Column(title: "Сумма", width: 60)]
 		public decimal Sum { get; set; }
-		[DisplayName("Статус")]
+
+		[Column(title: "Статус", width: 100)]
 		public OrderStatus Status { get; set; }
-		[DisplayName("Дата создания")]
+
+		[Column(title: "Дата создания", width: 110)]
 		public DateTime DateCreate { get; set; }
-		[DisplayName("Дата выполнения")]
+
+		[Column(title: "Дата выполнения", width: 110)]
 		public DateTime? DateImplement { get; set; }
 
 	}
