@@ -13,10 +13,14 @@ namespace FishFactoryContracts.ViewModels
 		public int Id { get; set; }
 
 		public int ClientId { get; set; }
+		public int? ImplementerId { get; set; }
 		public int CannedId { get; set; }
 
 		[DisplayName("Клиент")]
 		public string ClientFIO { get; set; }
+
+		[DisplayName("Исполнитель")]
+		public string ImplementerFIO { get; set; }
 
 		[DisplayName("Консервы")]
 		public string CannedName { get; set; }

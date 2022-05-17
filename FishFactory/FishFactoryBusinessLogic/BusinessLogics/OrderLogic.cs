@@ -16,6 +16,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
         private readonly IOrderStorage _orderStorage;
         private readonly ICannedStorage _cannedStorage;
         private readonly IWareHouseStorage _wareHouseStorage;
+        private readonly object locker = new();
         public OrderLogic(IOrderStorage orderStorage, ICannedStorage cannedStorage, IWareHouseStorage wareHouseStorage)
         {
             _orderStorage = orderStorage;
@@ -48,33 +49,44 @@ namespace FishFactoryBusinessLogic.BusinessLogics
         }
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
-            var order = _orderStorage.GetElement(new OrderBindingModel
+            lock (locker)
             {
-                Id = model.OrderId
-            });
-            if (order == null)
-            {
-                throw new Exception("Не найден заказ");
+                var order = _orderStorage.GetElement(new OrderBindingModel
+                {
+                    Id = model.OrderId
+                });
+                if (order == null)
+                {
+                    throw new Exception("Не найден заказ");
+                }
+                if (order.Status != OrderStatus.Принят && order.Status != OrderStatus.Требуются_материалы)
+                {
+                    throw new Exception("Статус заказа отличен от \"Принят\" или \"Требуются материалы\"");
+                }
+                var updatingOrder = new OrderBindingModel
+                {
+                    Id = order.Id,
+                    ClientId = order.ClientId,
+                    ImplementerId = model.ImplementerId,
+                    CannedId = order.CannedId,
+                    Count = order.Count,
+                    Sum = order.Sum,
+                    DateCreate = order.DateCreate,
+                    DateImplement = DateTime.Now
+                };
+                if (!_wareHouseStorage.WriteOffFromWarehouses(_cannedStorage.GetElement(new CannedBindingModel
+                {
+                    Id = order.CannedId
+                }).CannedComponents, order.Count))
+                {
+                    updatingOrder.Status = OrderStatus.Требуются_материалы;
+                }
+                else
+                {
+                    updatingOrder.Status = OrderStatus.Выполняется;
+                }
+                _orderStorage.Update(updatingOrder);
             }
-            if (order.Status != OrderStatus.Принят)
-            {
-                throw new Exception("Заказ не в статусе \"Принят\"");
-            }
-            if (!_wareHouseStorage.WriteOffFromWarehouses(_cannedStorage.GetElement(new CannedBindingModel { Id = order.CannedId }).CannedComponents, order.Count))
-            {
-                throw new Exception("Недостаточно компонентов");
-            }
-            _orderStorage.Update(new OrderBindingModel
-            {
-                Id = order.Id,
-                ClientId = order.ClientId,
-                CannedId = order.CannedId,
-                Count = order.Count,
-                Sum = order.Sum,
-                DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
-            });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {
@@ -94,6 +106,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ClientId = order.ClientId,
+                ImplementerId = model.ImplementerId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -120,6 +133,7 @@ namespace FishFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
                 CannedId = order.CannedId,
                 Count = order.Count,
                 Sum = order.Sum,
